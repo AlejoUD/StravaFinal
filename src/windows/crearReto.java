@@ -10,11 +10,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 
 import javax.swing.*;
 
-import Clases.Entrenamiento;
-import Clases.Reto;
+import Dominio.*;
 
 import java.awt.*;
 
@@ -90,10 +90,10 @@ public class crearReto extends JFrame{
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
 	                Reto retotest = new Reto();
-	                retotest.setNombre(tnombre.getText());
+	                retotest.setName(tnombre.getText());
 	                retotest.setFechaInicio(tFechaInicio.getText());
 	                retotest.setFechaFin(tFechaFin.getText());
-	                retotest.setObjetivo(tObjetivo.getText());
+	                retotest.setDistanciaObjetivo(Double.parseDouble(tObjetivo.getText());
 	                retotest.setDeporte(tDeporte.getText());
 	                crearReto(retotest);
 	                
@@ -119,14 +119,14 @@ public class crearReto extends JFrame{
 }
 	public Reto crearReto(Reto reto) {
 		
-		reto.setNombre(tnombre.getText());
-		reto.setFechaInicio(tFechaInicio.getText());
-		reto.setFechaFin(tFechaFin.getText());
-		reto.setObjetivo(tObjetivo.getText());
+		reto.setName(tnombre.getText());
+		reto.setFecha_inicio(tFechaInicio.getText());
+		reto.setFecha_fin(tFechaFin.getText().toString());
+		reto.setDistanciaObjetivo(Double.parseDouble(tObjetivo.getText()));
 		reto.setDeporte(tDeporte.getText());
 		System.out.println(reto.toString());
-		System.out.println(reto.getNombre());
-		pw.println("Nombre: "+reto.getNombre()+ " , Fecha Inicio: " + reto.getFechaInicio()+ " , Fecha Fin: "+ reto.getFechaFin() +" , Objetivo: " + reto.getObjetivo()+ " , Deporte: "+ reto.getDeporte());
+		System.out.println(reto.getName());
+		pw.println("Nombre: "+reto.getName()+ " , Fecha Inicio: " + reto.getFechaInicio()+ " , Fecha Fin: "+ reto.getFechaFin() +" , Objetivo: " + reto.getObjetivo()+ " , Deporte: "+ reto.getDeporte());
 		pw.flush();
 		pw.close();
 	return reto;
