@@ -18,8 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ParteUsuario.usuario;
-import Servidor.Entrenamiento;
+import Dominio.*;
 
 public class crearSesion extends JFrame {
 	
@@ -94,14 +93,14 @@ public class crearSesion extends JFrame {
 		 btnCrearSesion.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
-	            	Entrenamiento entreno = new Entrenamiento();
+	            	Sesion entreno = new Sesion();
 	            	entreno.setTitulo(tTitulo.getText());
-	            	entreno.setFechaInicio(tFechaInicio.getText());
+	            	entreno.setFecha_inicio(tFechaInicio.getText());
 	    			Integer distanciaTest = Integer.parseInt(tDistancia.getText());
 	    			entreno.setDistancia(distanciaTest);
-	    			entreno.setDuracion(tDuracion.getText());
+	    			entreno.setDuracion(Double.parseDouble(tDuracion.getText()));
 	    			entreno.setDeporte(tDeporte.getText());
-	    			entreno.setHoraInicio(tHora.getText());
+	    			entreno.setHora_inicio(tHora.getText());
 ;	                crearSesion(entreno);
 	            	
 	            
@@ -122,15 +121,15 @@ public class crearSesion extends JFrame {
 		
 	}
 	
-	public Entrenamiento crearSesion(Entrenamiento entrenamiento) {
+	public Sesion crearSesion(Sesion entrenamiento) {
 		
 			entrenamiento.setTitulo(tTitulo.getText());
-			entrenamiento.setFechaInicio(tFechaInicio.getText());
+			entrenamiento.setFecha_inicio(tFechaInicio.getText());
 			Integer distanciaTest = Integer.parseInt(tDistancia.getText());
 			entrenamiento.setDistancia(distanciaTest);
-			entrenamiento.setDuracion(tDuracion.getText());
+			entrenamiento.setDuracion(Double.parseDouble(tDuracion.getText()));
 			entrenamiento.setDeporte(tDeporte.getText());
-			entrenamiento.setHoraInicio(tHora.getText());
+			entrenamiento.setHora_inicio(tHora.getText());
 			System.out.println(entrenamiento.toString());
 			System.out.println(entrenamiento.getTitulo());
 			pw.println("Titulo: "+entrenamiento.getTitulo()+ " , Fecha Inicio: " + entrenamiento.getFechaInicio()+ " , Distancia: "+ entrenamiento.getDistancia() +" , Duracion: " + entrenamiento.getDuracion()+ " , Deporte: "+ entrenamiento.getDeporte()+ " , Hora de Inicio: "+ entrenamiento.getHoraInicio());

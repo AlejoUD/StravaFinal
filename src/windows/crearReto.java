@@ -93,7 +93,7 @@ public class crearReto extends JFrame{
 	                retotest.setName(tnombre.getText());
 	                retotest.setFechaInicio(tFechaInicio.getText());
 	                retotest.setFechaFin(tFechaFin.getText());
-	                retotest.setDistanciaObjetivo(Double.parseDouble(tObjetivo.getText());
+	                retotest.setDistanciaObjetivo(Double.parseDouble(tObjetivo.getText()));
 	                retotest.setDeporte(tDeporte.getText());
 	                crearReto(retotest);
 	                
