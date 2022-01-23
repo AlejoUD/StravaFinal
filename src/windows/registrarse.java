@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import ParteUsuario.usuario;
+import Dominio.*;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,12 +24,10 @@ public class registrarse {
 	public JTextField tNombre;
 	private JTextField tEmail;
 	private JTextField tPeso;
-	private JTextField tAltura;
-	private JTextField tFrecCardMax;
-	private JTextField tFrecCardReposo;
+	private JTextField tFrecCard;
 	private JTextField tContrasenya;
 	private JTextField tRepetirContrasenya;
-	public usuario usuarioDefinitivo;
+	public Usuario usuarioDefinitivo;
 	File file;
 	FileWriter fw;
 	PrintWriter pw;
@@ -89,32 +87,14 @@ public class registrarse {
 		tPeso.setBounds(37, 367, 171, 25);
 		frame.getContentPane().add(tPeso);
 		
-		JLabel lAltura = new JLabel("Altura(cm):");
-		lAltura.setBounds(37, 403, 184, 25);
-		frame.getContentPane().add(lAltura);
+		JLabel lFrecCard = new JLabel("Frecuencia Cardíaca:");
+		lFrecCard.setBounds(310, 44, 184, 25);
+		frame.getContentPane().add(lFrecCard);
 		
-		tAltura = new JTextField();
-		tAltura.setColumns(10);
-		tAltura.setBounds(37, 439, 171, 25);
-		frame.getContentPane().add(tAltura);
-		
-		JLabel lFrecCardMax = new JLabel("Frecuencia Cardíaca Máxima:");
-		lFrecCardMax.setBounds(310, 44, 184, 25);
-		frame.getContentPane().add(lFrecCardMax);
-		
-		tFrecCardMax = new JTextField();
-		tFrecCardMax.setColumns(10);
-		tFrecCardMax.setBounds(308, 82, 171, 25);
-		frame.getContentPane().add(tFrecCardMax);
-		
-		JLabel lFrecCardReposo = new JLabel("Frecuencia Cardíaca en Reposo:");
-		lFrecCardReposo.setBounds(312, 121, 230, 25);
-		frame.getContentPane().add(lFrecCardReposo);
-		
-		tFrecCardReposo = new JTextField();
-		tFrecCardReposo.setColumns(10);
-		tFrecCardReposo.setBounds(310, 159, 171, 25);
-		frame.getContentPane().add(tFrecCardReposo);
+		tFrecCard = new JTextField();
+		tFrecCard.setColumns(10);
+		tFrecCard.setBounds(308, 82, 171, 25);
+		frame.getContentPane().add(tFrecCard);
 		
 		JLabel lContrasenya = new JLabel("Contraseña:");
 		lContrasenya.setBounds(310, 208, 184, 25);
@@ -138,7 +118,7 @@ public class registrarse {
 		btnRegistrar.setBounds(341, 408, 104, 23);
 		frame.getContentPane().add(btnRegistrar);
 		
-		usuarioDefinitivo = new usuario();
+		usuarioDefinitivo = new Usuario();
 		btnRegistrar.addActionListener(new ActionListener() {
 			
 			@Override
@@ -185,22 +165,18 @@ public class registrarse {
 		
 
 	}
-	public usuario crearRegistro(usuario user) {
+	public Usuario crearRegistro(Usuario user) {
 		if (tContrasenya.getText().equals(tRepetirContrasenya.getText())) {
-			user.setNombre(tNombre.getText());
+			user.setName(tNombre.getText());
 			user.setEmail(tEmail.getText());
 			user.setContrasenya(tContrasenya.getText());
 			Integer peso = Integer.parseInt(tPeso.getText());
 			float fPeso = peso.floatValue();
 			user.setPeso(fPeso);
-			Integer altura = Integer.parseInt(tAltura.getText());
-			float fAltura = altura.floatValue();
-			user.setAltura(fAltura);
-			user.setFrecCardMax(Integer.parseInt(tFrecCardMax.getText()));
-			user.setFrecCardRepo(Integer.parseInt(tFrecCardReposo.getText()));
+			user.setFrecuencia(tFrecCard.getText());
 			user.setFechaNac(textField.getText());
 			System.out.println(user.toString());
-			pw.println("Nombre: "+user.getNombre()+ " , Email: " + user.getEmail()+ " , Contraseña: "+ user.getContrasenya() +" , Peso: " + user.getPeso()+ " , Altura: "+ user.getAltura()+ " , Frecuencia Cardiaca Maxima: "+ user.getFrecCardMax()+ " , Frecuencia Cardiaca en Reposo: "+ user.getFrecCardRepo()+" , Fecha de nacimiento: "+user.getFechaNac());
+			pw.println("Nombre: "+user.getName()+ " , Email: " + user.getEmail()+ " , Contraseña: "+ user.getContrasenya() +" , Peso: " + user.getPeso()+ " , Altura: "+ user.getAltura()+ " , Frecuencia Cardiaca Maxima: "+ user.getFrecCardMax()+ " , Frecuencia Cardiaca en Reposo: "+ user.getFrecCardRepo()+" , Fecha de nacimiento: "+user.getFechaNac());
 			pw.flush();
 			pw.close();
 		}else {
