@@ -13,8 +13,8 @@ import java.io.PrintWriter;
 
 import javax.swing.*;
 
-import Servidor.Entrenamiento;
-import Servidor.Reto;
+import Clases.Entrenamiento;
+import Clases.Reto;
 
 import java.awt.*;
 
